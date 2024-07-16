@@ -1,0 +1,37 @@
+﻿@using SmartStore.StrubeExport.Models
+@model ProfileConfigurationModel
+
+<div class="adminContent">
+    <div class="adminRow">
+        <div class="admin-config-group">
+            <div class="head">@T("Plugins.SmartStore.StrubeExport.GeneralSettings")</div>
+        </div>
+    </div>
+    <div class="adminRow">
+        <div class="adminTitle">
+            <smart-label asp-for="ExportShipAddress" />
+        </div>
+        <div class="adminData">
+            <editor asp-for="ExportShipAddress" />
+            <span asp-validation-for="ExportShipAddress"/>
+        </div>
+    </div>
+    <div class="adminRow">
+        <div class="adminTitle">
+            <smart-label asp-for="SuppressPrice" />
+        </div>
+        <div class="adminData">
+            <editor asp-for="SuppressPrice" />
+            <span asp-validation-for="SuppressPrice" />
+        </div>
+    </div>
+    <div class="adminRow" >
+        <div class="adminTitle">
+            <smart-label asp-for="SuppressBank" />
+        </div>
+        <div class="adminData">
+            <editor asp-for="SuppressBank" />
+            <span asp-validation-for="SuppressBank" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "../module.schema.json",
+  "Group": "Analytics",
+  "SystemName": "SmartStore.StrubeExport",
+  "FriendlyName": "StrubeExport",
+  "Description": "Strube specific Exports",
+  "Version": "5.0.5",
+  "MinAppVersion": "5.0.5",
+  "Author": "Strube DuS GmbH",
+  "Order": 0,
+  "ResourceRootKey": "Plugins.SmartStore.Tax"
+
+}
+

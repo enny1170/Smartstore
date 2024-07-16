@@ -1,0 +1,50 @@
+﻿@model SmartStore.StrubeExport.Models.ConfigurationModel
+
+@{
+    Layout = "_ConfigureModule";
+}
+
+@await Component.InvokeAsync("StoreScope")
+
+<widget target-zone="admin_button_toolbar_before">
+    <button id="SaveConfigButton" type="submit" name="save" class="btn btn-warning" value="save">
+        <i class="fa fa-check"></i>
+        <span>@T("Admin.Common.Save")</span>
+    </button>
+</widget>
+
+<div class="plugin-configuration">
+    <div>
+        <div class="alert alert-info alert-dismissible">
+            @Html.Raw(@T("Plugins.SmartStore.StrubeExport.AdminInstruction"))
+            <button class="btn-close" data-dismiss="alert"></button>
+        </div>
+    </div>
+    <div>
+        <a href="http://www.google.com/merchants/" rel="nofollow" target="_blank">
+            <img src="@Url.Content("~/Modules/Smartstore.Google.MerchantCenter/branding.png")" alt="Google Merchant Center" />
+        </a>
+    </div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    <div class="adminContent">
+        <div class="adminRow">
+            <div class="adminTitle">
+                @Html.SmartLabelFor(model => model.MyFirstSetting)
+            </div>
+            <div class="adminData">
+                @Html.EditorFor(model => model.MyFirstSetting)
+                @Html.ValidationMessageFor(model => model.MyFirstSetting)
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+}

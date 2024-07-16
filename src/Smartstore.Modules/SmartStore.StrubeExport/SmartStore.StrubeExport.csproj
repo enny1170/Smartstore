@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <Product>Smartstore Strube Export</Product>
+        <OutputPath>..\..\Smartstore.Web\Modules\Smartstore.StrubeExport</OutputPath>
+        <OutDir>$(OutputPath)</OutDir>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="App_Data\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="EPPlus" Version="6.2.9" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Configuration\" />
+      <None Remove="Views\Shared\" />
+      <None Remove="Components\" />
+      <None Remove="Views\Shared\Components\" />
+      <None Remove="Views\Shared\Components\StrubeXlsxConfiguration\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Configuration\" />
+      <Folder Include="Views\Shared\" />
+      <Folder Include="Components\" />
+      <Folder Include="Views\Shared\Components\" />
+      <Folder Include="Views\Shared\Components\StrubeXlsxConfiguration\" />
+    </ItemGroup>
+</Project>
