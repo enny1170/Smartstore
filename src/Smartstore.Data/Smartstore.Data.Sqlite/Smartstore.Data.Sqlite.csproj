@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <Product>Smartstore SQLite Data Provider</Product>
@@ -9,8 +9,8 @@
         <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.8" GeneratePathProperty="true" />
         <PackageReference Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.8" GeneratePathProperty="true" />
         <PackageReference Include="SQLitePCLRaw.core" Version="2.1.8" GeneratePathProperty="true" />
-        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.4" GeneratePathProperty="true" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.4" GeneratePathProperty="true" />
+        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.7" GeneratePathProperty="true" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.7" GeneratePathProperty="true" />
 
         <!--<None Include="$(PkgSQLitePCLRaw_lib_e_sqlite3)\runtimes\**\*" CopyToOutputDirectory="PreserveNewest" LinkBase="runtimes">
             <Visible>true</Visible>
