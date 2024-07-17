@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace SmartStore.StrubeExport.Models
+namespace Smartstore.StrubeExport.Models
 {
     public class ConfigurationModel : ModelBase
     {

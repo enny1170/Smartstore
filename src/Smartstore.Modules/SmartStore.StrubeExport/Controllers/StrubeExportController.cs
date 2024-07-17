@@ -5,13 +5,13 @@ using Smartstore.Core.Common.Services;
 using Smartstore.Core.DataExchange.Export;
 using Smartstore.Web.Controllers;
 using Smartstore.Web.Modelling.Settings;
-using SmartStore.StrubeExport.Models;
-using SmartStore.StrubeExport.Settings;
+using Smartstore.StrubeExport.Models;
+using Smartstore.StrubeExport.Settings;
 using System;
 
 
 
-namespace SmartStore.Controllers
+namespace Smartstore.StrubeExport
 {
     public class StrubeExportController : AdminController
     {

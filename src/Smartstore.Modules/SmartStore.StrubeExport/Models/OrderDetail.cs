@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Web;
 
-namespace SmartStore.StrubeExport.Models
+namespace Smartstore.StrubeExport.Models
 {
     public class OrderDetail
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using SmartStore.StrubeExport.Models;
+using Smartstore.StrubeExport.Models;
 using Smartstore.Core.DataExchange.Export;
 using Smartstore.Engine.Modularity;
 using Smartstore.Core.DataExchange;
@@ -13,7 +13,7 @@ using System.Threading;
 using Smartstore.Core.Checkout.Orders;
 using Smartstore.Core.Widgets;
 
-namespace SmartStore.StrubeExport.Providers
+namespace Smartstore.StrubeExport.Providers
 {
     /// <summary>
     /// Provider for Export Order Infos without Prices as CSV File

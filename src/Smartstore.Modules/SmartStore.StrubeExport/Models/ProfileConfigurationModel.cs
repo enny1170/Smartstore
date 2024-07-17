@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartStore.StrubeExport.Models
+namespace Smartstore.StrubeExport.Models
 {
     [CustomModelPart]
     [Serializable]

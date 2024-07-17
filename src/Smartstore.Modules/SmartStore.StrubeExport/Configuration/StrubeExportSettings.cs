@@ -1,6 +1,6 @@
 ﻿using Smartstore.Core.Configuration;
 
-namespace SmartStore.StrubeExport.Settings
+namespace Smartstore.StrubeExport.Settings
 {
     public class StrubeExportSettings : ISettings
     {

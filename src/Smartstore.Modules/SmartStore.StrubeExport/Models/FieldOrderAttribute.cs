@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SmartStore.StrubeExport.Models
+namespace Smartstore.StrubeExport.Models
 {
     /// <summary>
     /// Describes in which order marked Fields will be written to a String during CSV serialisation
