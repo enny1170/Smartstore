@@ -16,7 +16,7 @@ using Smartstore.Core.Configuration;
 using System.IO;
 //using Smartstore.Core.Domain.Orders;
 using OfficeOpenXml;
-using SmartStore.StrubeExport.Models;
+using Smartstore.StrubeExport.Models;
 using Smartstore.Core.Security;
 using Smartstore.Engine.Modularity;
 using Smartstore.Core.DataExchange.Export;
@@ -25,7 +25,7 @@ using System.Threading;
 using Smartstore.Core.Checkout.Orders;
 using Smartstore.Core.Widgets;
 
-namespace SmartStore.StrubeExport.Providers
+namespace Smartstore.StrubeExport.Providers
 {
     /// <summary>
     /// Provider for Export Order Infos without Prices as XLSX File

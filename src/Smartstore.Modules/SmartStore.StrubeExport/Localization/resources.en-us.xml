@@ -1,12 +1,12 @@
 ﻿<Language Name="English" IsDefault="false" IsRightToLeft="false">
-  <LocaleResource Name="Plugins.FriendlyName.SmartStore.StrubeExport" AppendRootKey="false">
+  <LocaleResource Name="Plugins.FriendlyName.Smartstore.StrubeExport" AppendRootKey="false">
     <Value>StrubeExport</Value>
   </LocaleResource>
-  <LocaleResource Name="Plugins.Description.SmartStore.StrubeExport" AppendRootKey="false">
+  <LocaleResource Name="Plugins.Description.Smartstore.StrubeExport" AppendRootKey="false">
     <Value>configurable exporte for orders in different formats</Value>
   </LocaleResource>
   
-  <LocaleResource Name="Plugins.SmartStore.StrubeExport" AppendRootKey="false">
+  <LocaleResource Name="Plugins.Smartstore.StrubeExport" AppendRootKey="false">
     <Children>
       <LocaleResource Name="AdminInstruction">
         <Value>

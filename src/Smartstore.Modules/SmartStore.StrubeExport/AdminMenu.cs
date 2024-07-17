@@ -2,7 +2,7 @@
 using Smartstore.Core.Content.Menus;
 using Smartstore.Web.Rendering.Builders;
 
-namespace SmartStore.StrubeExport
+namespace Smartstore.StrubeExport
 {
     public class AdminMenu : AdminMenuProvider
     {

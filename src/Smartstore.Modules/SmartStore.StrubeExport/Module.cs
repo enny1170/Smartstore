@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Smartstore.Engine.Modularity;
 using Smartstore.Http;
 
-namespace SmartStore.StrubeExport
+namespace Smartstore.StrubeExport
 {
     internal class Module : ModuleBase, IConfigurable
     {

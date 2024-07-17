@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Smartstore;
 using Smartstore.Web.Components;
-using SmartStore.StrubeExport.Models;
+using Smartstore.StrubeExport.Models;
 using System;
 using System.Collections.Generic;
 
-namespace SmartStore.StrubeExport.Components
+namespace Smartstore.StrubeExport.Components
 {
     /// <summary>
     /// Component to render profile configuration of strube xlsx export.

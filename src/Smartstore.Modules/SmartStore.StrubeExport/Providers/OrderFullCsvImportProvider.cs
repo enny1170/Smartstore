@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace SmartStore.StrubeExport.Providers
+namespace Smartstore.StrubeExport.Providers
 {
     public class OrderFullCsvImportProvider 
     {
