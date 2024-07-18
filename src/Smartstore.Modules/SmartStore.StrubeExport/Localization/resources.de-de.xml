@@ -35,6 +35,9 @@
       <LocaleResource Name="SuppressBank">
         <Value>Bankdaten unterdrücken</Value>
       </LocaleResource>
+      <LocaleResource Name="SuppressLineAmount">
+        <Value>Positionssumme und Preise unterdrücken</Value>
+      </LocaleResource>
 
 
 

@@ -59,6 +59,14 @@ namespace Smartstore.StrubeExport.Models
         public string CustomerEmail { get; set; }
         [FieldOrder(23)]
         public decimal OrderAmount { get; set; }
+        [FieldOrder(24)]
+        public decimal LineAmountExTax { get; set; }
+        [FieldOrder(25)]
+        public decimal LineAmountInklTax { get; set; }
+        [FieldOrder(26)]
+        public decimal LineUnitPriceInklTax { get; set; }
+        [FieldOrder(27)]
+        public decimal LineUnitPriceExTax { get; set; }
 
         public OrderDetail()
         {
@@ -122,6 +130,13 @@ namespace Smartstore.StrubeExport.Models
                 this.DirectDebitBIC = encryptionService.DecryptText(orderItem.Order.DirectDebitBIC); //,encryptionKey);
                 this.DirectDebitIBAN = encryptionService.DecryptText(orderItem.Order.DirectDebitIban); //,encryptionKey);
             }
+            if(!_config.SuppressLineAmount)
+            {
+                this.LineAmountExTax=orderItem.PriceExclTax;
+                this.LineAmountInklTax = orderItem.PriceInclTax;
+                this.LineUnitPriceExTax = orderItem.UnitPriceExclTax;
+                this.LineUnitPriceInklTax = orderItem.UnitPriceInclTax;
+            }
             //else
             //{
             //    this.DirectDebitAccountHolder = orderItem.Order.DirectDebitAccountHolder;
@@ -133,9 +148,19 @@ namespace Smartstore.StrubeExport.Models
         /// <summary>
         /// Creates A Header Line for CSV depending on Properties and FieldOrder
         /// </summary>
+        /// <param name="settings">Settings Object to use</param>
         /// <param name="Seperator">Seperator to use default ';'</param>
         /// <returns>a Seperator sperated String with property names</returns>
-        public string GetCSVHeader(string Seperator=";")
+        public string GetCSVHeader(ProfileConfigurationModel settings, string seperator = ";")
+        {
+            return GetCSVHeader(seperator);
+        }
+        /// <summary>
+        /// Creates A Header Line for CSV depending on Properties and FieldOrder
+        /// </summary>
+        /// <param name="seperator">Seperator to use default ';'</param>
+        /// <returns>a Seperator sperated String with property names</returns>
+        public string GetCSVHeader(string seperator=";")
         {
             StringBuilder sb = new StringBuilder();
             PropertyInfo[] props = this.GetType().GetProperties();
@@ -144,7 +169,7 @@ namespace Smartstore.StrubeExport.Models
             foreach (var item in propertyInfos)
             {
                 sb.Append(item.Name);
-                sb.Append(Seperator);
+                sb.Append(seperator);
             }
             return sb.ToString();
         }
@@ -152,9 +177,9 @@ namespace Smartstore.StrubeExport.Models
         /// <summary>
         /// Creates a Line for CSV depending on Properties and FieldOrder
         /// </summary>
-        /// <param name="Seperator">Seperator to use default ';'</param>
+        /// <param name="seperator">Seperator to use default ';'</param>
         /// <returns>a Seperator sperated String with property values</returns>
-        public string GetCSVLine(string Seperator=";")
+        public string GetCSVLine(string seperator=";")
         {
             StringBuilder sb = new StringBuilder();
             PropertyInfo[] props = this.GetType().GetProperties();
@@ -165,15 +190,27 @@ namespace Smartstore.StrubeExport.Models
                 if (item.GetValue(this) != null)
                 {
                     sb.Append(item.GetValue(this).ToString());
-                    sb.Append(Seperator);
+                    sb.Append(seperator);
                 }
                 else
                 {
                     sb.Append("");
-                    sb.Append(Seperator);
+                    sb.Append(seperator);
                 }
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Creates a Line for CSV depending on Properties and FieldOrder, try support ProfileSettings
+        /// </summary>
+        /// <param name="settings">Profile Settings object to use</param>
+        /// <param name="seperator">Seperator to use default ';'</param>
+        /// <returns>a Seperator sperated String with property values</returns>
+        public string GetCSVLine(ProfileConfigurationModel settings, string seperator = ";")
+        {
+            //ToDo: Maybe later
+            return GetCSVLine(seperator);
         }
     }
 }

@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Smartstore.Core.Checkout.Orders;
 using Smartstore.Core.Widgets;
+using Smartstore.Core.Data;
 
 namespace Smartstore.StrubeExport.Providers
 {
@@ -45,14 +46,16 @@ namespace Smartstore.StrubeExport.Providers
     public class OrderFullXlsxProvider: ExportProviderBase
     {
         //private readonly IEncryptionService _encryptionService;
+        private readonly SmartDbContext _db;
         private readonly IEncryptor _encryptor;
         private readonly ISettingService _settingService;
         private readonly string _encryptionKey;
 
         //public OrderFullXlsxProvider(IEncryptionService encryptionService, ISettingService settingService)
-        public OrderFullXlsxProvider(IEncryptor encryptor,ISettingService settingService)
+        public OrderFullXlsxProvider(SmartDbContext db, IEncryptor encryptor,ISettingService settingService)
         {
             //_encryptionService = encryptionService;
+            _db= db;
             _encryptor = encryptor;
             _settingService = settingService;
             var securitySettings = _settingService.GetSettingEntityByKeyAsync("securitysettings.encryptionkey").Result; // .GetSettings<SecuritySettings>();
@@ -110,7 +113,18 @@ namespace Smartstore.StrubeExport.Providers
                 foreach (dynamic order in segment)
                 {
                     Order orderEntity = order.Entity;
+                    //try to load related objects
+                    _db.Entry(orderEntity).Collection(o => o.OrderItems).Load();
+                    _db.Entry(orderEntity).Reference(o => o.ShippingAddress).Load();
+                    _db.Entry(orderEntity.ShippingAddress).Reference(s=> s.Country).Load();
+                    _db.Entry(orderEntity).Reference(o=>o.BillingAddress).Load();
+                    _db.Entry(orderEntity.BillingAddress).Reference(s=>s.Country).Load();
                     List<OrderItem> orderItem = orderEntity.OrderItems.ToList();
+                    //loading Product data
+                    foreach (var item in orderItem)
+                    {
+                        _db.Entry(item).Reference(i => i.Product).Load();
+                    }
 
                     if (context.Abort != DataExchangeAbortion.None)
                     {

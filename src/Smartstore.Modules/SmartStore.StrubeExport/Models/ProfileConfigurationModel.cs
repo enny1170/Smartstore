@@ -14,6 +14,8 @@ namespace Smartstore.StrubeExport.Models
 
         [LocalizedDisplay("Plugins.SmartStore.StrubeExport.SuppressBank")]
         public bool SuppressBank { get; set; } = false;
+        [LocalizedDisplay("Plugins.SmartStore.StrubeExport.SuppressLineAmount")]
+        public bool SuppressLineAmount { get; set; } = false;
 
     }
 }

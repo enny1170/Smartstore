@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Smartstore.Core.Checkout.Orders;
 using Smartstore.Core.Widgets;
+using Smartstore.Core.Data;
 
 namespace Smartstore.StrubeExport.Providers
 {
@@ -33,12 +34,14 @@ namespace Smartstore.StrubeExport.Providers
     ExportFeatures.CanOmitCompletionMail)]
     public class OrderFullCsvProvider : ExportProviderBase
     {
+        private readonly SmartDbContext _db;
         private readonly IEncryptor _encryptionService;
         private readonly ISettingService _settingService;
         private readonly string _encryptionKey;
 
-        public OrderFullCsvProvider(IEncryptor encryptionService, ISettingService settingService)
+        public OrderFullCsvProvider(SmartDbContext db, IEncryptor encryptionService, ISettingService settingService)
         {
+            _db = db;
             _encryptionService = encryptionService;
             _settingService = settingService;
             var securitySettings = _settingService.GetSettingEntityByKeyAsync("securitysettings.encryptionkey").Result; 
@@ -75,7 +78,18 @@ namespace Smartstore.StrubeExport.Providers
                 foreach (dynamic order in segment)
                 {
                     Order orderEntity = order.Entity;
+                    //try to load related objects
+                    _db.Entry(orderEntity).Collection(o => o.OrderItems).Load();
+                    _db.Entry(orderEntity).Reference(o => o.ShippingAddress).Load();
+                    _db.Entry(orderEntity.ShippingAddress).Reference(s => s.Country).Load();
+                    _db.Entry(orderEntity).Reference(o => o.BillingAddress).Load();
+                    _db.Entry(orderEntity.BillingAddress).Reference(s => s.Country).Load();
                     List<OrderItem> orderItem = orderEntity.OrderItems.ToList();
+                    //loading Product data
+                    foreach (var item in orderItem)
+                    {
+                        _db.Entry(item).Reference(i => i.Product).Load();
+                    }
 
                     if (context.Abort != DataExchangeAbortion.None)
                     {
